@@ -2380,6 +2380,13 @@ uint32_t extMain::readSPEF(char* filename,
     findSomeNet(_block, netNames, inets, logger_);
   }
 
+  if (diff && !calib) {
+    _spef->setUseIdsFlag(true, false);
+	  // DWA comment #1
+	  logger_->info(
+		RCX, 4031, "set diff successfully");
+  }
+
   uint32_t cnt = _spef->readBlock(0,
                                   inets,
                                   force,
