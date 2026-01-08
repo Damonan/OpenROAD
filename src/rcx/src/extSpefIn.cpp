@@ -2378,6 +2378,10 @@ uint32_t extSpef::readBlock(const uint32_t debug,
 
     _db_calibbase_corner = -1;
     if (calibrateBaseCorner != nullptr) {
+	  // DWA comment #1
+	  logger_->info(
+		RCX, 4041, "calibrateBaseCorner Name: {}", calibrateBaseCorner);
+
       int n = _block->getExtCornerIndex(calibrateBaseCorner);
       if (n < 0) {
         logger_->info(
@@ -2385,6 +2389,9 @@ uint32_t extSpef::readBlock(const uint32_t debug,
         return 0;
       }
       _db_calibbase_corner = n;
+	  // DWA comment #2
+	  logger_->info(
+		RCX, 4042, "_db_calibbase_corner set: {}", _db_calibbase_corner);
     }
     if (dbCornerName != nullptr) {
       const int n = _block->getExtCornerIndex(dbCornerName);
@@ -2475,6 +2482,9 @@ uint32_t extSpef::readBlock(const uint32_t debug,
                       1.0 /*resFactor*/,
                       1.0 /*ccFactor*/,
                       1.0 /*gndcFactor*/);
+	  // DWA comment #3
+	  logger_->info(
+		RCX, 4043, "Reached setUseIdsFlag...");
     setUseIdsFlag(true /*diff*/, true /*calib*/);
     setCalibLimit(101.0 /*upper_limit*/, 0.009 /*lower_limit*/);
     _keep_loaded_corner = true;
