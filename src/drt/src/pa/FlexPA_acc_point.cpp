@@ -164,6 +164,7 @@ void FlexPA::genAPEnclosedBoundary(std::map<frCoord, frAccessPointEnum>& coords,
   for (const auto& [cut_count, via_set] : via_map) {
     if (groups_used >= router_cfg_->VIA_MAX_CUT) {
       break;
+	}
 
     cnt = 0;
     for (const auto& [tup, via] : via_set) {
